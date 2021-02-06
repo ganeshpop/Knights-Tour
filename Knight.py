@@ -1,13 +1,14 @@
 import Print
 def KnightsTour(board,loc):
-    
+    possibilities = getPossibilities(board,loc)
+    print(possibilities)
 
 
 
 
 
 def getPossibilities(board,loc):
-    print("The Possible Locations: ")
+    possibilities = []
     count = 0
     for offset1 in [2, -2, 2, -2]:
         for offset2 in [1, -1]:
@@ -15,13 +16,12 @@ def getPossibilities(board,loc):
             if count < 5:
                 newLoc = ((loc[0]+offset1),(loc[1]+offset2))
                 if inBoard(newLoc):
-                    print(newLoc)
-                    board[newLoc[0]][newLoc[1]] = "xx"
+                    possibilities.append(newLoc)
             else:
                 newLoc = ((loc[0]+offset2),(loc[1]+offset1))
                 if inBoard(newLoc):
-                    print(newLoc)
-                    board[newLoc[0]][newLoc[1]] = "xx"
+                    possibilities.append(newLoc)
+    return possibilities
 
 
 def inBoard(loc):
